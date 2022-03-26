@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,9 +13,6 @@ function App() {
   const [limit, setLimit] = useState(10);
   const cats = useSelector((state) => state.cats.cats);
   const dispatch = useDispatch();
-
-  console.log('Ricerca effettuata -> ', ricercaEffettuata);
-  console.log('RandomCat ->', randomCat);
 
   useEffect(() => {
 
@@ -61,6 +57,8 @@ useEffect(() =>{
 
     setLimit(10);
     setRandomCat(false);
+    setRicerca('');
+    setRicercaEffettuata(false);
     dispatch(getCatsFetched({limite: limit}));
 
   }
@@ -70,7 +68,7 @@ useEffect(() =>{
     <div className="App">
   
       <h1>Applicazione gatta</h1>
-      <p>Scopri tutte le razze di gatto.</p>
+      <p>Scopri tutte le razze dei tuoi amici a 4 zampe.</p>
       <hr />
       <p>{labelInput}</p>
       <input className="ricercaInput" type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} />
